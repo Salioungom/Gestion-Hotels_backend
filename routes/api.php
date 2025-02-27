@@ -9,6 +9,9 @@ use App\Http\Controllers\UserController;
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
+
+Route::get('/user', [UserController::class, 'user'])->middleware('auth:sanctum');
+
 //hotel routes
 
 
@@ -18,4 +21,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/hotels/{id}', [HotelController::class, 'show']);
     Route::put('/hotels/{id}', [HotelController::class, 'update']);
     Route::delete('/hotels/{id}', [HotelController::class, 'destroy']);
+    Route::get('/logout',[UserController::class,'logout']);
 });
